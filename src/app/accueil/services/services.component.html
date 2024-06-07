@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<div class="page">
+  <section class="sec1">
+    <div class="bond">
+      <div class="bg">
+        <h3>Nos services</h3>
+        <p>Home / Nos services</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec2">
+    <div class="pt1">
+      <div class="custom-line2"></div>
+      <img src="https://tunisie-securite.com/wp-content/uploads/2020/07/services.jpg" class="moneypic">
+      <h4>Transport de fonds</h4>
+      <p> {{transtext}} <b>{{transtext1}}</b> {{transtext2}}</p>
+    </div>
+  </section>
+  <section class="sec3">
+    <h3>Nous Services</h3>
+    <div class="cards">
+      <div class="service-card" *ngFor="let service of services">
+        <img [src]="service.image" alt="{{ service.title }}">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <a class="read-more-btn" href="{{ service.link }}">EN SAVOIR PLUS</a>
+      </div>
+      </div>
+</section>
+  <section class="sec4">
+      <div class="bond2">
+        <div class="bg2">
+          <h3>Nous offrons les <b> meilleures solutions </b> <br> de sécurité à <b> nos clients.</b></h3>
+          <div class="rendez">
+            <button class="btn">
+              <span>PRENDRE UN RENDEZ-VOUS</span>
+            </button>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="sec5">
+    <div class="buts">
+      <button class="plus_btn2" (click)="toggleContent(0)" [class.active]="currentIndex === 0">
+        <span>Sécurité Physique: des locaux,transport,traitement et conservation des fonds</span>
+      </button>
+      <button class="plus_btn2" (click)="toggleContent(1)" [class.active]="currentIndex === 1">
+        <span>Sécurité Informatique</span>
+      </button>
+      <ul *ngIf="currentIndex === 0" class="content" [class.active]="currentIndex === 0">
+        <p><b>Tunisie Sécurité s’engage à respecter scrupuleusement les normes et textes règlementaires de sécurité relatives au transport, traitement & conservation des fonds et mettre les moyens nécessaires pour notamment :</b></p>
+        <li>La Sécurité Incendie : présence d’extincteurs adéquats en nombre suffisant et entretenus régulièrement</li>
+        <li>La Détection incendie : existence d’une centrale de détection incendie par centre régional, emplacement et nombre suffisant des détecteurs de fumée,</li>
+        <li>La vidéosurveillance de tous les compartiments sensibles et en temps réel pour chaque centre et conservation des enregistrements vidéos jusqu’à 3 mois (sachant que la BCT n’exige que 7 jours)</li>
+        <li>L’anti intrusion qui couvre les zones sensibles (Zone à accès contrôlé et Zones à Accès Restreint)</li>
+        <li>Le Contrôle d’accès électronique avec conservation de la traçabilité : codes alarmes personnalisés par profil, renforcé par des accès par empreinte pour les Zones à Accès Restreint (SAS, salle de traitement, coffres, local technique…)</li>
+        <li>Le gardiennage physique avec filtration des accès et tenue de registre à cet effet </li>
+        <li>La présence d’un Poste Central de Sécurité (PCS) bien sécurisé et travaillant en permanence 7/7 jours</li>
+        <li>Les véhicules de transports de fonds tous homologués par le Ministère de l’Intérieur : blindage, vitre anti balle, bouton anti panique, verrouillage pendant le transport, système de blocage total en cas d’attaque, coffres fort scellés au châssis, voitures dotées de moyens de communication et un système GPS / GPRS etc…</li>
+        <li>Les locaux et moyens de conservation des fonds : blindage des murs, salle forte, coffres forts et moyens de comptages, lissages et détection de faux billets … etc.</li>
+        <li>Tunisie Sécurité dispose d’un dispositif de matériels conforme à la réglementation et fera son possible pour le mettre technologiquement à la pointe en assurant des contrats de maintenances valides.</li>
+        <li>Tunisie Sécurité dispose et s’engage à fournir les attestations de conformité de ses installations électrique et de sécurité (systèmes intrusion, incendie, électricité, contrôle d’accès et vidéosurveillance…) auprès de bureaux de contrôle agrées et sociétés spécialisées,</li>
+      </ul>
+      <ul *ngIf="currentIndex === 1" class="content" [class.active]="currentIndex === 1">
+        <p><b>Tunisie Sécurité atteste et s’engage à :</b></p>
+        <li>Disposer d’un système d’information protégé contre les virus et intrusions</li>
+        <li>Disposer d’un outil (ligne spécialisée ou plateforme) permettant l’échange sécurisé des données entre les deux parties Tunisie Sécurité et la banque (les appels de fonds, levées de fonds, supports d’arrêtés, copies scannées des pièces comptables : bordereaux de remise & de collecte de fonds, bordereaux de remise des keepsafes, liste des agents habilités…)</li>
+        <li>Disposer d’un autre moyen de secours également sécurisé en cas de défaillance de cet outil</li>
+        <li>Disposer d’un système de gestion des habilitations et de leur traçabilité</li>
+        <li>Sécuriser l’accès aux fichiers réceptionnés</li>
+        <li>Sécuriser l’accès aux imprimantes partagées</li>
+        <li>Sécuriser les fichiers sauvegardés sur des disques externes</li>
+        <li>Disposer d’un local technique réservé au(x) serveur(s) de réception des fichiers avec protection d’accès</li>
+        <li>Disposer d’un site de back up (local, équipement et PCA)</li>
+      </ul>
+    </div>
+  </section>
+  </div>
+  <app-footer></app-footer>

@@ -1,0 +1,150 @@
+<div class="app-container">
+  <div class="app-header">
+    <div class="app-header-left">
+      <span class="app-icon"></span>
+      <img class="logoo" src="../../assets/logo.png">
+    </div>
+    <div class="app-header-right">
+
+      <div class="projects-section-header">
+        <h2 class="time"> {{ currentDate }}</h2>
+      </div>
+      <button class="notification-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-bell">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      </button>
+      <button class="profile-btn" (click)="toggleProfilePopup()">
+        <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-icon-library/user-286.png" />
+        <span class="name">{{ userName }} {{ lastName }}</span>
+      </button>
+      <div class="profile-popup" *ngIf="showProfilePopup">
+        <ul>
+          <li><a href="#" (click)="goToProfile()">Profile</a></li>
+          <li><a href="#" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="app-content">
+    <div class="app-sidebar">
+      <div class="sidebar-item">
+        <a href="" class="app-sidebar-link active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-home">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+        </a>
+        <p>Dashboard</p>
+      </div>
+      <div class="sidebar-item">
+        <a href="" class="app-sidebar-link">
+          <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="feather feather-pie-chart" viewBox="0 0 24 24">
+            <defs />
+            <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
+          </svg>
+        </a>
+        <p>Demandes</p>
+      </div>
+
+      <div class="sidebar-item">
+        <a href="" class="app-sidebar-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-calendar">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+        </a>
+        <p>Historique</p>
+      </div>
+    </div>
+
+    <div class="projects-section">
+      <div class="projects-section-line">
+        <div class="projects-status">
+          <div class="item-status">
+            <span class="status-number">45</span>
+            <span class="status-type">Encours</span>
+          </div>
+          <div class="item-status">
+            <span class="status-number">24</span>
+            <span class="status-type">Total des demandes</span>
+          </div>
+        </div>
+        <div class="view-actions">
+          <button class="view-btn list-view" title="List View">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-list">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </button>
+          <button class="view-btn grid-view active" title="Grid View">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-grid">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="project-boxes jsGridView">
+        <div class="project-box-wrapper">
+          <div (click)="nav1()" class="project-box bx1"
+            style="position: relative; background-image: url('https://img.freepik.com/vecteurs-premium/icone-encaissement-illustration-3d-collection-bancaire-icone-3d-encaissement-creatif-pour-modeles-conception-sites-web-infographies-plus-encore_676904-258.jpg?w=740'); background-size: cover; background-position: center;">
+            <div class="overlay">
+            </div>
+            <p class="box-content-header">Appel de Fond</p>
+          </div>
+        </div>
+        <div (click)="nav2()" class="project-box-wrapper">
+          <div class="project-box bx1"
+            style="position: relative; background-image: url('https://img.freepik.com/vecteurs-libre/livreur-portant-maks-medicaux_23-2148503788.jpg?w=996&t=st=1713813684~exp=1713814284~hmac=b172e8261ede0913cffa2736221207cbc6f78880f221f50413f5f27295e35975'); background-size: cover; background-position: center;">
+            <div class="overlay">
+            </div>
+            <p class="box-content-header">Levee du Fond</p>
+          </div>
+        </div>
+        <div (click)="nav3()" class="project-box-wrapper">
+          <div class="project-box bx1"
+            style="position: relative; background-image: url('https://img.freepik.com/vecteurs-libre/concept-livraison-design-plat-dessine-main_23-2149154713.jpg?w=740&t=st=1713814309~exp=1713814909~hmac=ad5c479d27ddd7749adf80f712e906c5cd15db9b09241ceacf03cc29e0bde73b'); background-size: cover; background-position: center;">
+            <div class="overlay">
+            </div>
+            <p class="box-content-header">Mise à Disposition</p>
+          </div>
+        </div>
+        <div (click)="nav4()" class="project-box-wrapper">
+          <div class="project-box bx1"
+            style="position: relative; background-image: url('https://img.freepik.com/vecteurs-premium/illustration-dessin-anime-services-change-devises-mondiales_2175-5010.jpg?w=900'); background-size: cover; background-position: center;">
+            <div class="overlay">
+            </div>
+            <p class="box-content-header">Echange</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat">
+      <app-chat></app-chat>
+    </div>
+  </div>
+</div>

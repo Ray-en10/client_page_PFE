@@ -1,0 +1,129 @@
+<div class="bg"></div>
+<div class="app">
+  <div class="header">
+    <img class="logoo" src="../../assets/logo.png">
+    <div class="header-menu">
+      <h2 class="menu-link is-active">Bonjour <span> {{ userName }} {{ lastName }}</span> </h2>
+
+    </div>
+    <div class="header-profile">
+      <div class="bunt">
+        <button class="Btn" (click)="logout()">
+          <div class="sign">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+              </path>
+            </svg>
+          </div>
+          <div class="text">Logout</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="left-side">
+      <div class="side-wrapper">
+        <div class="side-title">Dashbord</div>
+        <div class="side-menu">
+          <a href="/client" (click)="toggleMainHeaderLink($event)">
+            <svg viewBox="0 0 512 512">
+              <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <path d="M0 0h128v128H0zm0 0M192 0h128v128H192zm0 0M384 0h128v128H384zm0 0M0 192h128v128H0zm0 0"
+                  data-original="#bfc9d1" />
+              </g>
+              <path xmlns="http://www.w3.org/2000/svg" d="M192 192h128v128H192zm0 0" fill="currentColor"
+                data-original="#82b1ff" />
+              <path xmlns="http://www.w3.org/2000/svg"
+                d="M384 192h128v128H384zm0 0M0 384h128v128H0zm0 0M192 384h128v128H192zm0 0M384 384h128v128H384zm0 0"
+                fill="currentColor" data-original="#bfc9d1" />
+            </svg>
+            Accueil
+          </a>
+          <a routerLink="" routerLinkActive="is-active" (click)="toggleMainHeaderLink($event)">
+            <svg viewBox="0 0 488.932 488.932" fill="currentColor">
+              <path
+                d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z" />
+            </svg>
+            Contact Admin
+          </a>
+        </div>
+      </div>
+      <div class="side-wrapper">
+        <div class="side-title">Commande</div>
+        <div class="side-menu">
+          <a routerLink="" routerLinkActive="is-active" (click)="toggleMainHeaderLink($event)">
+            <svg viewBox="0 0 488.932 488.932" fill="currentColor">
+              <path
+                d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z" />
+            </svg>
+            Historique
+          </a>
+          <a routerLink="" routerLinkActive="is-active" (click)="toggleMainHeaderLink($event)">
+            <svg viewBox="0 0 488.932 488.932" fill="currentColor">
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+            Validation
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="activities">
+      <p class="title">Ajouter a votre Mise à Disposition</p>
+      <form class="form" [formGroup]="leveedufondForm">
+        <div class="form-info">
+          <div class="cltinfo">
+            <h3 >
+                <strong>Code:</strong> {{code}}
+              </h3>
+              <h3 >
+                <strong>Adresse email:</strong> {{email}}
+              </h3>
+            </div>
+        </div>
+        <div class="form2">
+          <div class="row">
+            <div class="form-group">
+              <label for="B50">B50:<input type="checkbox"></label>
+              <input type="number" id="B50" formControlName="B50" placeholder="Entrez la valeur de B50" required
+                (input)="calculateTotal()" (change)="validateInput($event, 'B50')">
+            </div>
+            <div class="form-group">
+              <label for="B20">B20:<input type="checkbox"></label>
+              <input type="number" id="B20" formControlName="B20" placeholder="Entrez la valeur de B20" required
+                (input)="calculateTotal() " (change)="validateInput($event, 'B20')">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="B10">B10:<input type="checkbox"></label>
+              <input type="number" id="B10" formControlName="B10" placeholder="Entrez la valeur de B10" required
+                (input)="calculateTotal()" (change)="validateInput($event, 'B10')">
+            </div>
+            <div class="form-group">
+              <label for="B5">B05:<input type="checkbox"></label>
+              <input type="number" id="B5" formControlName="B5" placeholder="Entrez la valeur de B5" required
+                (input)="calculateTotal()" (change)="validateInput($event, 'B5')">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="monnaie">Monnaie:<input type="checkbox"></label>
+              <input type="number" id="monnaie" formControlName="monnaie" placeholder="Entrez la valeur de la monnaie"
+                required (input)="calculateTotal()" (change)="validateInput($event, 'monnaie')">
+            </div>
+            <div class="form-group">
+              <label for="total">Total:</label>
+              <input type="number" id="total" formControlName="total" readonly>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="submit" type="submit" (click)="submitLeveeFond()">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
