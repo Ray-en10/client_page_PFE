@@ -1,11 +1,11 @@
-import { AppelfondService } from '../../../../appelfond.service';
+import { AppelfondService } from '../../../classes/services/appelfond.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientService } from '../../../../client.service';
+import { ClientService } from '../../../classes/services/client.service';
 import { CommonModule } from '@angular/common';
-import { Appelfond } from '../../../appelfond';
+import { Appelfond } from '../../../classes/models/appelfond';
 import { Router } from '@angular/router';
-import { ResponsableService } from '../../../responsable.service';
+import { ResponsableService } from '../../../classes/services/responsable.service';
 
 @Component({
   selector: 'app-appel-fond',
@@ -22,6 +22,8 @@ export class AppelFondComponent implements OnInit {
   code: number = 0;
   codeResponsable: number = 0;
   appeldufondForm: FormGroup = new FormGroup({});
+  showProfilePopup: boolean = false;
+  currentDate: string | undefined;
 
   constructor(
     private clientService: ClientService,
@@ -30,8 +32,22 @@ export class AppelFondComponent implements OnInit {
     private appelfondService: AppelfondService,
     private router: Router
   ) {}
+  toggleProfilePopup() {
+    this.showProfilePopup = !this.showProfilePopup;
+  }
 
+  goToProfile() {
+    // Implement navigation to profile page
+  }
+
+  Clientinfo(): void {
+    // Implement Clientinfo function
+  }
   ngOnInit() {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
+    this.currentDate = today.toLocaleDateString('fr-fr', options);
+
     this.client = history.state.client;
     if (this.client) {
       console.log('Client:', this.client);

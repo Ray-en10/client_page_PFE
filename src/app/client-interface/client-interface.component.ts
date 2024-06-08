@@ -1,19 +1,22 @@
 import { Component, AfterViewInit, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientService } from './../../client.service';
+import { ClientService } from '../classes/services/client.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Admin, Message } from './../message';
-import { ChatService } from './../chat.service';
-import { Client } from './../client';
+import { Admin, Message } from '../classes/models/message';
+import { ChatService } from '../classes/services/chat.service';
+import { Client } from '../classes/models/client';
 import { ChatComponent } from './chat/chat.component';
-import { ResponsableService } from '../responsable.service';
-import { Responsable } from '../responsable';
+import { ResponsableService } from '../classes/services/responsable.service';
+import { Responsable } from '../classes/models/responsable';
+import { NavbarComponent } from '../client-interface/navbar/navbar.component';
+import { SidebarComponent } from '../client-interface/sidebar/sidebar.component';
+
 
 @Component({
   selector: 'app-client-interface',
   standalone: true,
-  imports:[CommonModule,ReactiveFormsModule,ChatComponent],
+  imports:[CommonModule,ReactiveFormsModule,ChatComponent,NavbarComponent,SidebarComponent],
   templateUrl: './client-interface.component.html',
   styleUrl: './client-interface.component.scss',
 })

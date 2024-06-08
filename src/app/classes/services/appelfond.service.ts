@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Appelfond } from './app/appelfond';
+import { Appelfond } from '../models/appelfond';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,10 +7,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AppelfondService {
-
+  private apiUrl = 'http://localhost:8080/appelfond';
   constructor(private http: HttpClient) { }
 
   addAF(service: Appelfond): Observable<any> {
     return this.http.post<any>('http://localhost:8080/appelfond', service);
+  }
+  getAppelfonds(): Observable<Appelfond[]> {
+    return this.http.get<Appelfond[]>(this.apiUrl);
   }
 }

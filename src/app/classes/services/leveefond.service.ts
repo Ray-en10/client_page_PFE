@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Leveefond }from './app/leveefond'
+import { Leveefond }from '../models/leveefond'
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 @Injectable({

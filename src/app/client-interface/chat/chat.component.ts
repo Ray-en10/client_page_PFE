@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Admin, Message } from '../../message';
-import { ChatService } from '../../chat.service';
-import { Client } from '../../client';
+import { Admin, Message } from '../../classes/models/message';
+import { ChatService } from '../../classes/services/chat.service';
+import { Client } from '../../classes/models/client';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientService } from '../../../client.service';
+import { ClientService } from '../../classes/services/client.service';
 
 @Component({
   standalone: true,

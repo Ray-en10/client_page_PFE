@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientService } from '../../../../client.service';
+import { ClientService } from '../../../classes/services/client.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LeveefondService } from '../../../../leveefond.service';
-import { Leveefond } from '../../../leveefond';
-
-
+import { LeveefondService } from '../../../classes/services/leveefond.service';
+import { Leveefond } from '../../../classes/models/leveefond';
 
 
 
@@ -25,13 +23,31 @@ export class LeveeFondComponent  implements OnInit{
   email: string = '';
   code: number = 0;
   lastName: string = '';
-
+  showProfilePopup: boolean = false;
+  currentDate: string | undefined;
   leveedufondForm: FormGroup = new FormGroup({});
+
+
   constructor(private clientService: ClientService, private formBuilder: FormBuilder, private LeveefondService: LeveefondService ,private router: Router
   ) { }
 
+  toggleProfilePopup() {
+    this.showProfilePopup = !this.showProfilePopup;
+  }
 
+  goToProfile() {
+    // Implement navigation to profile page
+  }
+
+  Clientinfo(): void {
+    // Implement Clientinfo function
+  }
   ngOnInit() {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
+    this.currentDate = today.toLocaleDateString('fr-fr', options);
+
+
     this.client = history.state.client;
     if (this.client) {
       console.log('Client:', this.client);

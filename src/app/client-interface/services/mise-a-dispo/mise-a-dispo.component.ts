@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientService } from '../../../../client.service';
+import { ClientService } from '../../../classes/services/client.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LeveefondService } from '../../../../leveefond.service';
-import { Leveefond } from '../../../leveefond';
+import { LeveefondService } from '../../../classes/services/leveefond.service';
+import { Leveefond } from '../../../classes/models/leveefond';
 
 @Component({
   selector: 'app-mise-a-dispo',

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AppelfondService } from './classes/services/appelfond.service';
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ToastrModule.forRoot(),
     NgxSpinnerModule,
   ],
-
+  providers: [AppelfondService],
 })
 export class AppModule {}

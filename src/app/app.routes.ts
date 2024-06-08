@@ -14,7 +14,7 @@ import { ProfileComponent } from './client-interface/profile/profile.component';
 import { HistoriqueComponent } from './client-interface/historique/historique.component';
 import { CommandesComponent } from './client-interface/commandes/commandes.component';
 
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './classes/models/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
