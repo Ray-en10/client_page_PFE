@@ -1,4 +1,3 @@
-
 <!-- chat.component.html -->
 <div class="chat-widget">
   <div class="chat-bubble" (click)="toggleChat()">
@@ -23,7 +22,10 @@
           </div>
         </header>
         <div class="messages">
-          <div class="messages__bubble messages__bubble--left" *ngFor="let message of messages">
+          <div
+            class="messages__bubble"
+            [ngClass]="{'messages__bubble--right': message.senderAdmin, 'messages__bubble--left': !message.senderAdmin}"
+            *ngFor="let message of messages">
             <span class="messages__text">{{ message.content }}</span>
           </div>
         </div>
@@ -40,4 +42,3 @@
     </div>
   </div>
 </div>
-

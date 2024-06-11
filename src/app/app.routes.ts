@@ -13,6 +13,7 @@ import { ServicesComponent } from './accueil/services/services.component';
 import { ProfileComponent } from './client-interface/profile/profile.component';
 import { HistoriqueComponent } from './client-interface/historique/historique.component';
 import { CommandesComponent } from './client-interface/commandes/commandes.component';
+import { PasswordComponent } from './authentification/password/password.component';
 
 import { AuthGuard } from './classes/models/auth.guard';
 
@@ -30,7 +31,7 @@ export const routes: Routes = [
   { path: 'profil', component: ProfileComponent },
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuard] },
   { path: 'validation', component: CommandesComponent, canActivate: [AuthGuard] },
-
+  { path: 'motdepasse', component: PasswordComponent, },
 
 
 ];

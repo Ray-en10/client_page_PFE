@@ -21,4 +21,5 @@ export class AppelfondService {
   getAppelfondByClientId(clientId: string): Observable<Appelfond[]> {
     return this.http.get<Appelfond[]>(`${this.apiUrl}/client/${clientId}`);
   }
+
 }

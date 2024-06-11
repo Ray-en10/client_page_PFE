@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ClientService } from '../../classes/services/client.service';
 import { AppelfondService } from '../../classes/services/appelfond.service';
 import { Appelfond } from '../../classes/models/appelfond';
@@ -25,7 +24,7 @@ export class CommandesComponent implements OnInit {
     private clientService: ClientService,
     private appelfondService: AppelfondService,
     private responsableService: ResponsableService,
-    private router: Router
+
   ) {}
 
   ngOnInit(): void {
