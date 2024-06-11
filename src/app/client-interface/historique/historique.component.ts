@@ -1,64 +1,35 @@
-import { Router } from '@angular/router';
-import { ClientService } from '../../classes/services/client.service';
 import { Component, OnInit } from '@angular/core';
+import { Appelfond } from '../../classes/models/appelfond';
+import { AppelfondService } from '../../classes/services/appelfond.service';
 import { ChatComponent } from '../chat/chat.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [ChatComponent],
+  imports: [ChatComponent,NavbarComponent,SidebarComponent,CommonModule],
   templateUrl: './historique.component.html',
-  styleUrl: './historique.component.scss'
+  styleUrls: ['./historique.component.scss']
 })
 export class HistoriqueComponent implements OnInit {
-  code: number = 0;
-  userName: string = '';
-  email: string = '';
-  lastName: string = '';
+  historique: Appelfond[] = [];
 
-  constructor(private Clientservice: ClientService, private router: Router) {}
+  constructor(private appelfondService: AppelfondService) {}
 
-  ngOnInit() {
-    const client = this.Clientservice.getClient();
-    console.log('code:', client.code);
-    console.log('nom:', client.name);
-    console.log('lastname:', client.lastname);
-    console.log('email:', client.email);
-    console.log('Client:', client);
-    this.userName = client.name;
-    this.lastName = client.lastname;
+  ngOnInit(): void {
+    this.fetchHistorique();
   }
 
-  Clientinfo(): void {
-
+  fetchHistorique(): void {
+    this.appelfondService.getAppelfonds().subscribe(
+      (data: Appelfond[]) => {
+        this.historique = data.filter(item => item.livrer === true);
+      },
+      error => {
+        console.error('Error fetching historique data', error);
+      }
+    );
   }
-  clearLocalStorage(): void {
-    localStorage.clear();
-    console.log('Local storage cleared');
-    this.router.navigate(['login']);
-  }
-  logout(): void {
-    localStorage.clear();
-    console.log('Local storage cleared');
-    this.router.navigate(['login']);
-  }
-
-  side1() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['client'], { state: { client } });
-  }
-  side2() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['profil'], { state: { client } });
-  }
-  side3() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['historique'], { state: { client } });
-  }
-  side4() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['validation'], { state: { client } });
-  }
-
-
 }
-

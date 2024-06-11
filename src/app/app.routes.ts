@@ -31,6 +31,8 @@ export const routes: Routes = [
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuard] },
   { path: 'validation', component: CommandesComponent, canActivate: [AuthGuard] },
 
+
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,5 +1,5 @@
 export interface Responsable {
-  
+
   codeResponsable: number;
   name: string;
   lastName: string;

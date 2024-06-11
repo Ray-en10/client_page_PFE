@@ -62,9 +62,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           localStorage.setItem('responsable', JSON.stringify(response.user));
           this.toastService.success('Connexion réussie');
-          setTimeout(() => {
-            this.router.navigate(['/client']);
-          }, 1000);
+          this.router.navigate(['/client']); // Navigate to client interface
           console.log('Responsable authentication response:', response);
         },
         (error) => {

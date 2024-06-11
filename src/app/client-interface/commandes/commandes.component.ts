@@ -1,64 +1,64 @@
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientService } from '../../classes/services/client.service';
-import { Component, OnInit } from '@angular/core';
+import { AppelfondService } from '../../classes/services/appelfond.service';
+import { Appelfond } from '../../classes/models/appelfond';
+import { ResponsableService } from '../../classes/services/responsable.service';
+import { NavbarComponent } from '../navbar/navbar.component'
+import { SidebarComponent } from '../sidebar/sidebar.component'
 import { ChatComponent } from '../chat/chat.component';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-commandes',
   standalone: true,
-  imports: [ChatComponent],
+  imports: [ChatComponent,NavbarComponent,SidebarComponent,CommonModule],
   templateUrl: './commandes.component.html',
-  styleUrl: './commandes.component.scss'
+  styleUrls: ['./commandes.component.scss']
 })
 export class CommandesComponent implements OnInit {
-  code: number = 0;
-  userName: string = '';
-  email: string = '';
-  lastName: string = '';
+  appelfonds: Appelfond[] = [];
+  isLoggedInAsClient: boolean = false;
+  isLoggedInAsResponsible: boolean = false;
 
-  constructor(private Clientservice: ClientService, private router: Router) {}
+  constructor(
+    private clientService: ClientService,
+    private appelfondService: AppelfondService,
+    private responsableService: ResponsableService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    const client = this.Clientservice.getClient();
-    console.log('code:', client.code);
-    console.log('nom:', client.name);
-    console.log('lastname:', client.lastname);
-    console.log('email:', client.email);
-    console.log('Client:', client);
-    this.userName = client.name;
-    this.lastName = client.lastname;
-  }
-
-  Clientinfo(): void {
-
-  }
-  clearLocalStorage(): void {
-    localStorage.clear();
-    console.log('Local storage cleared');
-    this.router.navigate(['login']);
-  }
-  logout(): void {
-    localStorage.clear();
-    console.log('Local storage cleared');
-    this.router.navigate(['login']);
+  ngOnInit(): void {
+    if (this.clientService.getClient() !== null) {
+      this.isLoggedInAsClient = true;
+      this.getClientAppelfonds();
+    } else if (this.responsableService.getResponsable() !== null) {
+      this.isLoggedInAsResponsible = true;
+      this.fetchResponsibleDemands();
+    }
   }
 
-  side1() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['client'], { state: { client } });
+  getClientAppelfonds(): void {
+    const client = this.clientService.getClient();
+    if (client && client.code) {
+      this.appelfondService.getAppelfondByClientId(client.code).subscribe(
+        (data: Appelfond[]) => {
+          this.appelfonds = data;
+        },
+        error => {
+          console.error('Error fetching appelfond data', error);
+        }
+      );
+    } else {
+      console.error('No client logged in');
+    }
   }
-  side2() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['profil'], { state: { client } });
-  }
-  side3() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['historique'], { state: { client } });
-  }
-  side4() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['validation'], { state: { client } });
+
+  fetchResponsibleDemands() {
+    this.appelfondService.getAppelfonds().subscribe((data: Appelfond[]) => {
+      this.appelfonds = data.filter(demand => demand.responsable !== null);
+    });
   }
 
 
 }
-

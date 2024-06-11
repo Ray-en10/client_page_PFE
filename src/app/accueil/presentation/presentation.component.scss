@@ -420,3 +420,194 @@ td:nth-child(3) {
 td:nth-child(4) {
   text-align: center;
 }
+@media only screen and (max-width: 1200px) {
+  .present>h4, .present>p {
+    margin-left: 8rem;
+  }
+
+  .custom-line {
+    margin: 30px 8rem;
+  }
+
+  .assetlog {
+    margin-right: 8rem;
+  }
+
+  .buts {
+    margin-left: 40%;
+  }
+
+  .pt1>h4 {
+    margin-left: 40%;
+  }
+
+  .plus_btn {
+    margin-left: 8rem;
+  }
+
+  .moneypic {
+    margin-left: 8rem;
+  }
+
+  .sec3 {
+    margin: 7rem 0rem -2rem 8rem;
+  }
+
+  .sec3>h4 {
+    margin-left: 0;
+  }
+
+  .custom-line3 {
+    margin: 30px 0rem 2rem 0rem;
+  }
+
+  .tab {
+    margin-left: -8rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .present>h4, .present>p {
+    margin-left: 5rem;
+  }
+
+  .custom-line {
+    margin: 30px 5rem;
+  }
+
+  .assetlog {
+    margin-right: 5rem;
+  }
+
+  .buts {
+    margin-left: 35%;
+  }
+
+  .pt1>h4 {
+    margin-left: 35%;
+  }
+
+  .plus_btn {
+    margin-left: 5rem;
+  }
+
+  .moneypic {
+    margin-left: 5rem;
+  }
+
+  .sec3 {
+    margin: 7rem 0rem -2rem 5rem;
+  }
+
+  .sec3>h4 {
+    margin-left: 0;
+  }
+
+  .custom-line3 {
+    margin: 30px 0rem 2rem 0rem;
+  }
+
+  .tab {
+    margin-left: -5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .present>h4, .present>p {
+    margin-left: 3rem;
+  }
+
+  .custom-line {
+    margin: 30px 3rem;
+  }
+
+  .assetlog {
+    margin-right: 3rem;
+  }
+
+  .buts {
+    margin-left: 30%;
+  }
+
+  .pt1>h4 {
+    margin-left: 30%;
+  }
+
+  .plus_btn {
+    margin-left: 3rem;
+  }
+
+  .moneypic {
+    margin-left: 3rem;
+  }
+
+  .sec3 {
+    margin: 7rem 0rem -2rem 3rem;
+  }
+
+  .sec3>h4 {
+    margin-left: 0;
+  }
+
+  .custom-line3 {
+    margin: 30px 0rem 2rem 0rem;
+  }
+
+  .tab {
+    margin-left: -3rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .present>h4, .present>p {
+    margin-left: 1rem;
+  }
+
+  .custom-line {
+    margin: 30px 1rem;
+    width: 50%;
+  }
+
+  .assetlog {
+    margin-right: 1rem;
+    width: 100%;
+  }
+
+  .buts {
+    margin-left: 20%;
+  }
+
+  .pt1>h4 {
+    margin-left: 20%;
+  }
+
+  .plus_btn {
+    margin-left: 1rem;
+    width: 90%;
+  }
+
+  .moneypic {
+    margin-left: 1rem;
+    width: 100%;
+  }
+
+  .sec3 {
+    margin: 7rem 0rem -2rem 1rem;
+    width: 100%;
+  }
+
+  .sec3>h4 {
+    margin-left: 0;
+  }
+
+  .custom-line3 {
+    margin: 30px 0rem 2rem 0rem;
+    width: 50%;
+  }
+
+  .tab {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+}

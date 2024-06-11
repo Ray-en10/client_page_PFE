@@ -13,7 +13,12 @@ export class AppelfondService {
   addAF(service: Appelfond): Observable<any> {
     return this.http.post<any>('http://localhost:8080/appelfond', service);
   }
+
   getAppelfonds(): Observable<Appelfond[]> {
     return this.http.get<Appelfond[]>(this.apiUrl);
+  }
+
+  getAppelfondByClientId(clientId: string): Observable<Appelfond[]> {
+    return this.http.get<Appelfond[]>(`${this.apiUrl}/client/${clientId}`);
   }
 }

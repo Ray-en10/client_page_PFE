@@ -40,12 +40,10 @@ export class NavbarComponent implements  OnInit {
   ) {}
 
   ngOnInit() {
-    // Initialize current date
     const today = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
     this.currentDate = today.toLocaleDateString('fr-fr', options);
 
-    // Get client or responsable information
     const client = this.Clientservice.getClient();
     if (client) {
       this.userName = client.name;
