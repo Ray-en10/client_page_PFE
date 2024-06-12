@@ -1,6 +1,6 @@
 export interface Responsable {
-
-  codeResponsable: number;
+  id?:number;
+  codeResponsable: string;
   name: string;
   lastName: string;
   email: string;

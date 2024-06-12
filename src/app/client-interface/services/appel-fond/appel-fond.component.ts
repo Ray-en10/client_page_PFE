@@ -65,7 +65,7 @@ export class AppelFondComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (token) {
       const parsedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token payload
-      this.codeResponsable = parsedToken.codeResponsable || 0;
+      this.codeResponsable = parsedToken.codeResponsable;
     }
 
     this.appeldufondForm = this.formBuilder.group({

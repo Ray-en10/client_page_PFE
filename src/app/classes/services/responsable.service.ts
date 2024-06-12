@@ -10,8 +10,8 @@ export class ResponsableService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(email: string, password: string, codeAgence: number): Observable<any> {
-    const loginData = { email, password, codeAgence };
+  authenticate(email: string, password: string, codeResponsable: string): Observable<any> {
+    const loginData = { email, password, codeResponsable };
     return this.http.post<any>(`${this.baseUrl}/login`, loginData);
   }
   setResponsable(value: any) {

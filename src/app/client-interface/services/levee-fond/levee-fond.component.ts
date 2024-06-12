@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LeveefondService } from '../../../classes/services/leveefond.service';
 import { Leveefond } from '../../../classes/models/leveefond';
+import { ResponsableService } from '../../../classes/services/responsable.service';
 
 
 
@@ -13,23 +14,28 @@ import { Leveefond } from '../../../classes/models/leveefond';
 @Component({
   selector: 'app-levee-fond',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './levee-fond.component.html',
-  styleUrl: './levee-fond.component.scss'
+  styleUrl: './levee-fond.component.scss',
 })
-export class LeveeFondComponent  implements OnInit{
+export class LeveeFondComponent implements OnInit {
   client: any;
   userName: string = '';
   email: string = '';
   code: number = 0;
+  codeResponsable: number = 0;
   lastName: string = '';
   showProfilePopup: boolean = false;
   currentDate: string | undefined;
   leveedufondForm: FormGroup = new FormGroup({});
 
-
-  constructor(private clientService: ClientService, private formBuilder: FormBuilder, private LeveefondService: LeveefondService ,private router: Router
-  ) { }
+  constructor(
+    private clientService: ClientService,
+    private responsableService: ResponsableService,
+    private formBuilder: FormBuilder,
+    private LeveefondService: LeveefondService,
+    private router: Router
+  ) {}
 
   toggleProfilePopup() {
     this.showProfilePopup = !this.showProfilePopup;
@@ -47,7 +53,6 @@ export class LeveeFondComponent  implements OnInit{
     const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
     this.currentDate = today.toLocaleDateString('fr-fr', options);
 
-
     this.client = history.state.client;
     if (this.client) {
       console.log('Client:', this.client);
@@ -57,25 +62,38 @@ export class LeveeFondComponent  implements OnInit{
       this.email = client?.email || '';
       this.code = client?.code || 0;
       console.log(this.code);
-
     } else {
       console.error('No client data found');
     }
+     const token = localStorage.getItem('token');
+     if (token) {
+       const parsedToken = JSON.parse(atob(token.split('.')[1])); // Decode the token payload
+       this.codeResponsable = parsedToken.codeResponsable;
+     }
     this.leveedufondForm = this.formBuilder.group({
       B50: [0, [Validators.required, Validators.min(0)]],
       B20: [0, [Validators.required, Validators.min(0)]],
       B10: [0, [Validators.required, Validators.min(0)]],
       B5: [0, [Validators.required, Validators.min(0)]],
       monnaie: [0, [Validators.required, Validators.min(0)]],
-      total: [{ value: 0, disabled: true }]
+      total: [{ value: 0, disabled: true }],
     });
-    this.leveedufondForm.get('B50')!.valueChanges.subscribe(() => this.calculateTotal());
-    this.leveedufondForm.get('B20')!.valueChanges.subscribe(() => this.calculateTotal());
-    this.leveedufondForm.get('B10')!.valueChanges.subscribe(() => this.calculateTotal());
-    this.leveedufondForm.get('B5')!.valueChanges.subscribe(() => this.calculateTotal());
-    this.leveedufondForm.get('monnaie')!.valueChanges.subscribe(() => this.calculateTotal());
+    this.leveedufondForm
+      .get('B50')!
+      .valueChanges.subscribe(() => this.calculateTotal());
+    this.leveedufondForm
+      .get('B20')!
+      .valueChanges.subscribe(() => this.calculateTotal());
+    this.leveedufondForm
+      .get('B10')!
+      .valueChanges.subscribe(() => this.calculateTotal());
+    this.leveedufondForm
+      .get('B5')!
+      .valueChanges.subscribe(() => this.calculateTotal());
+    this.leveedufondForm
+      .get('monnaie')!
+      .valueChanges.subscribe(() => this.calculateTotal());
   }
-
 
   calculateTotal() {
     const B50Control = this.leveedufondForm.get('B50');
@@ -97,7 +115,7 @@ export class LeveeFondComponent  implements OnInit{
     console.log('B5:', B5);
     console.log('monnaie:', monnaie);
 
-    const total = (50 * B50) + (20 * B20) + (10 * B10) + (5 * B5) + monnaie;
+    const total = 50 * B50 + 20 * B20 + 10 * B10 + 5 * B5 + monnaie;
 
     console.log('total:', total);
 
@@ -115,24 +133,35 @@ export class LeveeFondComponent  implements OnInit{
   }
 
   submitLeveeFond() {
-   const B50 = this.leveedufondForm.get('B50')?.value || 0;
+    const B50 = this.leveedufondForm.get('B50')?.value || 0;
     const B20 = this.leveedufondForm.get('B20')?.value || 0;
     const B10 = this.leveedufondForm.get('B10')?.value || 0;
     const B5 = this.leveedufondForm.get('B5')?.value || 0;
     const monnaie = this.leveedufondForm.get('monnaie')?.value || 0;
 
     const client = this.clientService.getClient();
+    const responsable = this.responsableService.getResponsable();
+    let leveefond = new Leveefond(
+      new Date(),
+      client,
+      responsable,
+      B50,
+      B20,
+      B10,
+      B5,
+      monnaie
+    );
 
-    let leveefond = new Leveefond(new Date(), client, B50, B20, B10, B5, monnaie);
-
-    this.LeveefondService.addlf(leveefond).subscribe(response => {
-      console.log('Response from server:', response);
-      alert("demande envoyer avec succees ! !")
-      this.router.navigate(['/home']);
-
-    }, error => {
-      console.error('Error:', error);
-    });
+    this.LeveefondService.addlf(leveefond).subscribe(
+      (response) => {
+        console.log('Response from server:', response);
+        alert('demande envoyer avec succees ! !');
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
   logout(): void {
     // Clear local storage
@@ -147,5 +176,4 @@ export class LeveeFondComponent  implements OnInit{
     mainHeaderLinks.forEach((link) => link.classList.remove('is-active'));
     (event.target as HTMLElement).classList.add('is-active');
   }
-
 }

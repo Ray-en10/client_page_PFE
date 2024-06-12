@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     }
 
     const { code, email, password } = this.loginForm.value;
-    const isResponsable = code.startsWith('1');
+    const isResponsable = code.startsWith('r');
 
     if (isResponsable) {
       this.responsableService.authenticate(email, password, code).subscribe(
