@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientService } from '../../../classes/services/client.service';
+import { ClientService } from '../../../services/client.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LeveefondService } from '../../../classes/services/leveefond.service';
-import { Leveefond } from '../../../classes/models/leveefond';
-import { ResponsableService } from '../../../classes/services/responsable.service';
+import { LeveefondService } from '../../../services/leveefond.service';
+import { Leveefond } from '../../../models/leveefond';
+import { ResponsableService } from '../../../services/responsable.service';
 
 
 

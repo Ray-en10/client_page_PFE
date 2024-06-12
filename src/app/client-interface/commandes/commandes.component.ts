@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../../classes/services/client.service';
-import { AppelfondService } from '../../classes/services/appelfond.service';
-import { Appelfond } from '../../classes/models/appelfond';
-import { ResponsableService } from '../../classes/services/responsable.service';
+import { ClientService } from '../../services/client.service';
+import { AppelfondService } from '../../services/appelfond.service';
+import { Appelfond } from '../../models/appelfond';
+import { ResponsableService } from '../../services/responsable.service';
 import { NavbarComponent } from '../navbar/navbar.component'
 import { SidebarComponent } from '../sidebar/sidebar.component'
 import { ChatComponent } from '../chat/chat.component';

@@ -1,11 +1,11 @@
-import { AppelfondService } from '../../../classes/services/appelfond.service';
+import { AppelfondService } from '../../../services/appelfond.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ClientService } from '../../../classes/services/client.service';
+import { ClientService } from '../../../services/client.service';
 import { CommonModule } from '@angular/common';
-import { Appelfond } from '../../../classes/models/appelfond';
+import { Appelfond } from '../../../models/appelfond';
 import { Router } from '@angular/router';
-import { ResponsableService } from '../../../classes/services/responsable.service';
+import { ResponsableService } from '../../../services/responsable.service';
 
 @Component({
   selector: 'app-appel-fond',

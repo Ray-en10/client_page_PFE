@@ -17,7 +17,7 @@ a{text-decoration: none;}
   overflow: hidden;
   color: #000000;
 }
-
+a{color: black;}
 .line {
   height: 1px;
   background-color: #ccc;
@@ -631,7 +631,6 @@ a {
     margin: 0;
   }
 
-  &-wrapper {}
 
   &-percentage {
     text-align: right;

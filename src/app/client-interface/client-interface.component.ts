@@ -1,14 +1,14 @@
 import { Component, AfterViewInit, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientService } from '../classes/services/client.service';
+import { ClientService } from '../services/client.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Admin, Message } from '../classes/models/message';
-import { ChatService } from '../classes/services/chat.service';
-import { Client } from '../classes/models/client';
+import { Admin, Message } from '../models/message';
+import { ChatService } from '../services/chat.service';
+import { Client } from '../models/client';
 import { ChatComponent } from './chat/chat.component';
-import { ResponsableService } from '../classes/services/responsable.service';
-import { Responsable } from '../classes/models/responsable';
+import { ResponsableService } from '../services/responsable.service';
+import { Responsable } from '../models/responsable';
 import { NavbarComponent } from '../client-interface/navbar/navbar.component';
 import { SidebarComponent } from '../client-interface/sidebar/sidebar.component';
 

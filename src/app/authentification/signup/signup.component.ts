@@ -5,8 +5,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
-import { ClientService } from '../../classes/services/client.service';
-import { Client } from '../../classes/models/client';
+import { ClientService } from '../../services/client.service';
+import { Client } from '../../models/client';
 import { CommonModule } from '@angular/common';
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../../classes/services/client.service';
-import { ResponsableService } from '../../classes/services/responsable.service';
+import { ClientService } from '../../services/client.service';
+import { ResponsableService } from '../../services/responsable.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';

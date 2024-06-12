@@ -1,63 +1,70 @@
 import { Router } from '@angular/router';
-import { ClientService } from '../../classes/services/client.service';
+import { ClientService } from '../../services/client.service';
+import { ResponsableService } from '../../services/responsable.service';
 import { Component, OnInit } from '@angular/core';
 import { ChatComponent } from '../chat/chat.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ChatComponent],
+  imports: [ChatComponent, NavbarComponent, SidebarComponent, FormsModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent  implements OnInit {
-  code: number = 0;
-  userName: string = '';
-  email: string = '';
-  lastName: string = '';
+export class ProfileComponent implements OnInit {
+  isClient: boolean = false;
+  isResponsable: boolean = false;
+  user: any = {};
 
-  constructor(private Clientservice: ClientService, private router: Router) {}
+  constructor(
+    private clientService: ClientService,
+    private responsableService: ResponsableService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    const client = this.Clientservice.getClient();
-    console.log('code:', client.code);
-    console.log('nom:', client.name);
-    console.log('lastname:', client.lastname);
-    console.log('email:', client.email);
-    console.log('Client:', client);
-    this.userName = client.name;
-    this.lastName = client.lastname;
+    const client = this.clientService.getClient();
+    const responsable = this.responsableService.getResponsable();
+
+    if (client) {
+      this.isClient = true;
+      this.user = client;
+    } else if (responsable) {
+      this.isResponsable = true;
+      this.user = {
+        ...responsable,
+        agence: responsable.agence || {}, // Ensure agence is defined
+        bank: responsable.agence?.bank || {} // Ensure bank is defined
+      };
+    } else {
+      // Handle case where no user is logged in
+      this.router.navigate(['login']);
+    }
   }
 
-  Clientinfo(): void {
+  saveChanges() {
+    if (this.isClient) {
+      this.clientService.updateClient(this.user).subscribe(response => {
+        console.log('Client updated successfully');
+      }, error => {
+        console.error('Error updating client', error);
+      });
+    } else if (this.isResponsable) {
+      this.responsableService.updateResponsable(this.user.id, this.user).subscribe(response => {
+        console.log('Responsable updated successfully');
+      }, error => {
+        console.error('Error updating responsable', error);
+      });
+    }
+  }
 
-  }
-  clearLocalStorage(): void {
-    localStorage.clear();
-    console.log('Local storage cleared');
-    this.router.navigate(['login']);
-  }
   logout(): void {
     localStorage.clear();
     console.log('Local storage cleared');
     this.router.navigate(['login']);
   }
-
-  side1() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['client'], { state: { client } });
-  }
-  side2() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['profil'], { state: { client } });
-  }
-  side3() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['historique'], { state: { client } });
-  }
-  side4() {
-    const client = this.Clientservice.getClient();
-    this.router.navigate(['validation'], { state: { client } });
-  }
-  saveChanges(){}
 }

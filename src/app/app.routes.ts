@@ -13,9 +13,9 @@ import { ServicesComponent } from './accueil/services/services.component';
 import { ProfileComponent } from './client-interface/profile/profile.component';
 import { HistoriqueComponent } from './client-interface/historique/historique.component';
 import { CommandesComponent } from './client-interface/commandes/commandes.component';
-import { PasswordComponent } from './authentification/password/password.component';
-
-import { AuthGuard } from './classes/models/auth.guard';
+import { AuthGuard } from './models/auth.guard';
+import { ForgotPasswordComponent } from './authentification/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './authentification/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -31,8 +31,8 @@ export const routes: Routes = [
   { path: 'profil', component: ProfileComponent },
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuard] },
   { path: 'validation', component: CommandesComponent, canActivate: [AuthGuard] },
-  { path: 'motdepasse', component: PasswordComponent, },
-
+  { path: 'motdepasse', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
 
 ];
 @NgModule({
